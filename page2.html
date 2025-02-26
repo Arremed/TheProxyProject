@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            text-align: center;
+            height: 100vh; /* Full height */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Moves content higher */
+            align-items: center;
+            padding-top: 50px; /* Adjust this value to move text higher */
+        }
+        @keyframes flash {
+            0% { color: green; }
+            33% { color: blue; }
+            66% { color: yellow; }
+            100% { color: green; }
+        }
+        .flashing-text {
+            animation: flash 2s infinite; /* Flashing effect */
+            font-size: 3em; /* Make it bigger */
+        }
+        .back-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="flashing-text">Welcome To The !</h1>
+    <p class="flashing-text">This is the second page with a black background.</p>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.location.href = 'index.html'; // Change this if your main page is named differently
+        }
+    </script>
+</body>
+</html>
