@@ -42,12 +42,13 @@
     <h1 class="flashing-text">Welcome To The Proxy Web!</h1>
     <p class="flashing-text">Welcome To The Proxy Web. This is a page where proxy links will be posted.</p>
 
-    <!-- Panic Button (Now Redirects to Clever) -->
+    <!-- Panic Button -->
     <button class="panic-button" onclick="panicMode()">Panic</button>
 
     <script>
         function panicMode() {
-            window.location.href = 'https://clever.com'; // Redirects to Clever.com
+            alert("Error: Something went wrong.");
+            window.location.href = "about:blank"; // Redirects to a blank page
         }
 
         document.addEventListener('keydown', function(event) {
