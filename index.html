@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Proxy Web</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            text-align: center; /* Center text */
+            height: 100vh; /* Full height to center vertically */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+        }
+        .panic-button, .page2-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .page2-button {
+            background-color: blue;
+            right: auto;
+            left: 20px;
+        }
+        @keyframes flashColor {
+            0%, 100% { color: red; }
+            50% { color: white; }
+        }
+        @keyframes flash {
+            0% { color: green; }
+            33% { color: blue; }
+            66% { color: yellow; }
+            100% { color: green; }
+        }
+        .flashing {
+            animation: flash 2s infinite;
+            font-size: 3em;
+        }
+        .countdown {
+            font-size: 4em;
+            font-weight: bold;
+            animation: flashColor 1s infinite;
+        }
+        .flashing-text {
+            animation: flash 2s infinite;
+            font-size: 2em;
+        }
+        .panic-text {
+            animation: flashColor 1s infinite;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="flashing-text">Welcome To The Proxy Web!</h1>
+    <p class="flashing-text">Welcome To The Proxy Web. This is a page where proxy links will be posted.</p>
+    
+    <!-- Panic Button -->
+    <button class="panic-button" onclick="panicMode()">Panic</button>
+
+    <!-- Page 2 Button (Opens page2.html in the SAME tab) -->
+    <button class="page2-button" onclick="openPage2()">Go to Page 2</button>
+
+    <script>
+        function panicMode() {
+            document.body.innerHTML = '<h1 class="panic-text">PANIC MODE ACTIVATED!</h1><div class="countdown">3</div>';
+            document.title = 'Panic Mode';
+            let countdown = 3;
+            const countdownElement = document.querySelector('.countdown');
+            
+            const timer = setInterval(function() {
+                countdown--;
+                countdownElement.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    window.close(); // Attempts to close the tab
+                }
+            }, 1000);
+        }
+
+        function openPage2() {
+            window.location.href = 'page2.html'; // Opens page2.html in the same tab
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'p') { // Press 'P' to activate panic mode
+                panicMode();
+            }
+        });
+    </script>
+</body>
+</html>
